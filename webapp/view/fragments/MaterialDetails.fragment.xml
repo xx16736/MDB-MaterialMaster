@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog id="idAddMaterialDialog" title="Material Details">
+		<!--<beginButton>-->
+		<!--	<Button text="Add" type="Accept" press="onAddMaterialDialog"/>-->
+		<!--</beginButton>-->
+		<endButton>
+			<Button text="Cancel" type="Reject" press="onCloseMaterialDetailsDialog"/>
+		</endButton>
+		<content>
+			<Table id="idMaterialDetailsTable" inset="false" items="{path: 'materials>inquiries'}">
+				<columns>
+					<Column width="5em">
+						<Text text="Sr No"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Inquiry"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Text text="{materials>QuesId}"/>
+							<Text text="{materials>QuesText}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

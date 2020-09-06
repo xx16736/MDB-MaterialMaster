@@ -1,0 +1,120 @@
+<mvc:View controllerName="com.newell.fiori.HelloWorld.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:cards="sap.f.cards"
+	xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<VBox>
+							<Table id="idMaterialTable" mode="SingleSelectLeft" inset="false" items="{path: 'materials>/'}">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Materials ({config>/materialcount})" level="H2"/>
+											<ToolbarSpacer/>
+											<Button text="Add" press="onAddMaterial"></Button>
+											<Button text="Update" press="onUpdateMaterial"></Button>
+											<Button text="Delete" press="onDeleteMaterial"></Button>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Material"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Mat Type"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+										<Text text="Available"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<Text text="Date Available"/>
+									</Column>
+									<Column hAlign="End">
+										<Text text="Back Order Date"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="onSelectMaterial">
+										<cells>
+											<Text text="{materials>MatId} - {materials>MatDesc}"/>
+											<Text text="{materials>MatType}"/>
+											<Text text="{materials>Available}"/>
+											<Text text="{materials>DateAvailable}"/>
+											<Text text="{materials>BackOrderdate}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Carousel height="auto" pages="{ path: 'materials>/' }">
+								<customLayout>
+									<CarouselLayout visiblePagesCount="1"/>
+								</customLayout>
+								<f:Card>
+									<f:header>
+										<cards:Header title="{materials>MatId}" subtitle="{materials>MatDesc}" iconSrc="{products>ProductPicUrl}" iconDisplayShape="Square"/>
+									</f:header>
+									<f:content>
+										<l:VerticalLayout class="sapUiContentPadding" width="100%">
+											<l:BlockLayout>
+												<l:BlockLayoutRow>
+													<l:BlockLayoutCell title="Main Information" width="1">
+														<HBox class="sapUiTinyMarginBottom">
+															<Label text="Mat Type"/>
+														</HBox>
+														<HBox class="sapUiSmallMarginBottom">
+															<Text text="{materials>MatType}"/>
+														</HBox>
+														<HBox class="sapUiTinyMarginBottom">
+															<Label text="Available"/>
+														</HBox>
+														<HBox class="sapUiSmallMarginBottom">
+															<Text text="{materials>Available}"/>
+														</HBox>
+														<HBox class="sapUiTinyMarginBottom">
+															<Label text="Date Available"/>
+														</HBox>
+														<HBox class="sapUiTinyMarginBottom">
+															<Label text="{materials>DateAvailable}:"/>
+														</HBox>
+														<HBox class="sapUiTinyMarginBottom">
+															<Label text="Back Order Date"/>
+														</HBox>
+														<HBox class="sapUiSmallMarginBottom">
+															<Text text="{materials>BackOrderdate}"/>
+														</HBox>
+													</l:BlockLayoutCell>
+													<l:BlockLayoutCell title="Inquiries" width="1">
+														<Table inset="false" items="{path: 'materials>inquiries'}">
+															<columns>
+																<Column width="5em">
+																	<Text text="Sr No"/>
+																</Column>
+																<Column minScreenWidth="Tablet" demandPopin="true">
+																	<Text text="Inquiry"/>
+																</Column>
+															</columns>
+															<items>
+																<ColumnListItem >
+																	<cells>
+																		<Text text="{materials>QuesId}"/>
+																		<Text text="{materials>QuesText}"/>
+																	</cells>
+																</ColumnListItem>
+															</items>
+														</Table>
+													</l:BlockLayoutCell>
+												</l:BlockLayoutRow>
+											</l:BlockLayout>
+										</l:VerticalLayout>
+									</f:content>
+								</f:Card>
+							</Carousel>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

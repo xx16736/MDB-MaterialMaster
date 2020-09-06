@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog id="idAddMaterialDialog" title="Add Material">
+		<beginButton>
+			<Button text="Update" type="Accept" press="onUpdateMaterialDialog"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" type="Reject" press="onCloseUpdateMaterialDialog"/>
+		</endButton>
+		<content>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="Id"/>
+					<Text text="{add>/MatId}"/>
+					<Label text="Desc"/>
+					<Input value="{add>/MatDesc}"></Input>
+					<Label text="Type"/>
+					<Input value="{add>/MatType}"/>
+					<Label text="Available"/>
+					<Input value="{add>/Available}"/>
+					<Label text="Date Available"/>
+					<Input value="{add>/DateAvailable}"/>
+					<Label text="Back Order Date"/>
+					<Input value="{add>/BackOrderdate}"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
