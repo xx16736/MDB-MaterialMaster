@@ -34,7 +34,9 @@ sap.ui.define([
 				oView.addDependent(this._oAskQuestionDialog);
 				this._oAskQuestionDialog.open();
 
-				this.getOwnerComponent().getModel("askQues").setProperty("/MatId", "001");
+				var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+				var sMatId = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject().MatId;
+				this.getOwnerComponent().getModel("askQues").setProperty("/MatId", sMatId);
 			}.bind(this));
 		},
 
@@ -62,9 +64,9 @@ sap.ui.define([
 					}.bind(this));
 				}.bind(this));
 			}.bind(this));
-		
+
 		},
-		
+
 		fetchUser: function (app, credentials) {
 			return new Promise(function (fnResolve, fnReject) {
 				var user = app.logIn(credentials).then(function () {
@@ -78,8 +80,8 @@ sap.ui.define([
 			this._oAskQuestionDialog.destroy();
 			this.getView().getModel("askQues").setData({});
 		},
-		
-		goBack: function(){
+
+		goBack: function () {
 			this.getOwnerComponent().getRouter().navTo("RouteMain");
 		}
 
