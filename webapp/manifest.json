@@ -91,13 +91,11 @@
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": true,
-					"viewId": "Main",
 					"viewName": "Main"
 				},
 				"TargetMatDetails": {
 					"viewType": "XML",
 					"clearControlAggregation": true,
-					"viewId": "MaterialDetails",
 					"viewName": "MaterialDetails"
 				}
 			}
