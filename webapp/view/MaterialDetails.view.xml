@@ -20,46 +20,53 @@
 						<l:VerticalLayout class="sapUiContentPadding" width="100%">
 							<l:BlockLayout>
 								<l:BlockLayoutRow>
-									<l:BlockLayoutCell title="Main Information" width="1">
+									<l:BlockLayoutCell  width="1">
 										<HBox class="sapUiTinyMarginBottom">
 											<Label text="Mat Type"/>
+											<Text text="{materials>MatType}" class="sapUiTinyMarginBegin"/>
 										</HBox>
-										<HBox class="sapUiSmallMarginBottom">
-											<Text text="{materials>MatType}"/>
-										</HBox>
+										<!--<HBox class="sapUiSmallMarginBottom">-->
+										<!--	<Text text="{materials>MatType}"/>-->
+										<!--</HBox>-->
 										<HBox class="sapUiTinyMarginBottom">
 											<Label text="Available"/>
+											<Text text="{materials>Available}" class="sapUiTinyMarginBegin"/>
 										</HBox>
-										<HBox class="sapUiSmallMarginBottom">
-											<Text text="{materials>Available}"/>
-										</HBox>
+										<!--<HBox class="sapUiSmallMarginBottom">-->
+										<!--	<Text text="{materials>Available}"/>-->
+										<!--</HBox>-->
 										<HBox class="sapUiTinyMarginBottom">
 											<Label text="Date Available"/>
+											<Text text="{materials>DateAvailable}" class="sapUiTinyMarginBegin"/>
 										</HBox>
-										<HBox class="sapUiTinyMarginBottom">
-											<Label text="{materials>DateAvailable}:"/>
-										</HBox>
+										<!--<HBox class="sapUiTinyMarginBottom">-->
+										<!--	<Label text="{materials>DateAvailable}:"/>-->
+										<!--</HBox>-->
 										<HBox class="sapUiTinyMarginBottom">
 											<Label text="Back Order Date"/>
+											<Text text="{materials>BackOrderdate}" class="sapUiTinyMarginBegin"/>
 										</HBox>
-										<HBox class="sapUiSmallMarginBottom">
-											<Text text="{materials>BackOrderdate}"/>
-										</HBox>
+										<!--<HBox class="sapUiSmallMarginBottom">-->
+										<!--	<Text text="{materials>BackOrderdate}"/>-->
+										<!--</HBox>-->
 									</l:BlockLayoutCell>
 									<l:BlockLayoutCell title="Inquiries" width="1">
 										<Table inset="false" items="{path: 'materials>inquiries'}">
 											<columns>
-												<Column width="5em">
-													<Text text="Sr No"/>
-												</Column>
-												<Column minScreenWidth="Tablet" demandPopin="true">
-													<Text text="Inquiry"/>
+												<!--<Column width="5em">-->
+												<!--	<Text text="Sr No"/>-->
+												<!--</Column>-->
+												<!--<Column minScreenWidth="Tablet" demandPopin="true">-->
+												<!--	<Text text="Inquiry"/>-->
+												<!--</Column>-->
+												<Column>
+													<Text text="Text"/>
 												</Column>
 											</columns>
 											<items>
 												<ColumnListItem >
 													<cells>
-														<Text text="{materials>QuesId}"/>
+														<!--<Text text="{materials>QuesId}"/>-->
 														<Text text="{materials>QuesText}"/>
 													</cells>
 												</ColumnListItem>

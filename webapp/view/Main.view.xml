@@ -12,9 +12,6 @@
 										<content>
 											<Title text="Materials ({config>/materialcount})" level="H2"/>
 											<ToolbarSpacer/>
-											<Button text="Add" press="onAddMaterial"></Button>
-											<Button text="Update" press="onUpdateMaterial"></Button>
-											<Button text="Delete" press="onDeleteMaterial"></Button>
 										</content>
 									</OverflowToolbar>
 								</headerToolbar>
@@ -25,13 +22,13 @@
 									<Column minScreenWidth="Tablet" demandPopin="true">
 										<Text text="Mat Type"/>
 									</Column>
-									<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+									<Column hAlign="Center">
 										<Text text="Available"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
 										<Text text="Date Available"/>
 									</Column>
-									<Column hAlign="End">
+									<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
 										<Text text="Back Order Date"/>
 									</Column>
 								</columns>
@@ -47,7 +44,7 @@
 									</ColumnListItem>
 								</items>
 							</Table>
-							<Carousel height="auto" pages="{ path: 'materials>/' }">
+							<!--<Carousel height="auto" pages="{ path: 'materials>/' }">
 								<customLayout>
 									<CarouselLayout visiblePagesCount="1"/>
 								</customLayout>
@@ -110,9 +107,17 @@
 										</l:VerticalLayout>
 									</f:content>
 								</f:Card>
-							</Carousel>
+							</Carousel>-->
 						</VBox>
 					</content>
+					<footer>
+						<OverflowToolbar >
+							<ToolbarSpacer/>
+							<Button text="Add" press="onAddMaterial"></Button>
+							<Button text="Update" press="onUpdateMaterial"></Button>
+							<Button text="Delete" press="onDeleteMaterial"></Button>
+						</OverflowToolbar>
+					</footer>
 				</Page>
 			</pages>
 		</App>

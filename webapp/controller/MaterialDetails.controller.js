@@ -78,6 +78,10 @@ sap.ui.define([
 			this._oAskQuestionDialog.destroy();
 			this.getView().getModel("askQues").setData({});
 		},
+		
+		goBack: function(){
+			this.getOwnerComponent().getRouter().navTo("RouteMain");
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
