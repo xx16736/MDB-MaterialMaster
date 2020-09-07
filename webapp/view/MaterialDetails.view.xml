@@ -1,6 +1,12 @@
 <mvc:View xmlns:core="sap.ui.core" controllerName="com.newell.fiori.HelloWorld.controller.MaterialDetails" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.f" xmlns:cards="sap.f.cards" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m">
 	<Page title="details">
+		<customHeader>
+			<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button text="Go Back" type="Transparent" press="goBack"/>
+			</OverflowToolbar>
+		</customHeader>
 		<content>
 			<Carousel id="idCarousel" height="auto" pages="{ path: 'materials>/' }">
 				<customLayout>
@@ -67,5 +73,13 @@
 				</f:Card>
 			</Carousel>
 		</content>
+		<footer>
+			<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button text="Ask Ques" type="Transparent" press="onAskQues"/>
+				<Button text="Update" type="Transparent" press="onUpdateMatInfo"/>
+				<Button text="Delete" type="Transparent" press="onDeleteMat"/>
+			</OverflowToolbar>
+		</footer>
 	</Page>
 </mvc:View>
