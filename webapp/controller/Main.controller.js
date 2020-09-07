@@ -10,6 +10,14 @@ sap.ui.define([
 		onInit: function () {
 			var oModel = new JSONModel();
 			this.getOwnerComponent().setModel(oModel, "materials");
+			
+			var oModel = new JSONModel();
+			var oConfigAskQuesData = {
+				"MatId": "",
+				"QuesText": ""
+			};
+			this.getOwnerComponent().setModel(oModel, "askQues");
+			this.getOwnerComponent().getModel("askQues").setData(oConfigAskQuesData);
 
 			var oModelAddMaterial = new JSONModel();
 			this.getOwnerComponent().setModel(oModelAddMaterial, "add");

@@ -1,6 +1,8 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/core/Fragment",
+	"sap/m/MessageToast"
+], function (Controller, Fragment, MessageToast) {
 	"use strict";
 
 	return Controller.extend("com.newell.fiori.HelloWorld.controller.MaterialDetails", {
@@ -16,9 +18,65 @@ sap.ui.define([
 
 		onRouteMatched: function (oEvent) {
 			var sPath = this.getOwnerComponent().getModel("config").getProperty("/selectedMatPath");
-			var index = sPath.split("/")[sPath.split("/").length -1];
+			var index = sPath.split("/")[sPath.split("/").length - 1];
 			// this.byId("setActivePage").setActivePage();
 			this.byId("idCarousel").setActivePage(this.byId("idCarousel").getPages()[index]);
+		},
+
+		onAskQues: function () {
+			var oView = this.getView();
+			Fragment.load({
+				id: oView.getId(),
+				name: "com.newell.fiori.HelloWorld.view.fragments.AskQuestion",
+				controller: this
+			}).then(function (dialog) {
+				this._oAskQuestionDialog = dialog;
+				oView.addDependent(this._oAskQuestionDialog);
+				this._oAskQuestionDialog.open();
+
+				this.getOwnerComponent().getModel("askQues").setProperty("/MatId", "001");
+			}.bind(this));
+		},
+
+		onSubmitAskQues: function () {
+			var appId = "app-001-nntbv"; // Set Realm app ID here.
+			var oData = this.getView().getModel("askQues").getData();
+			var appConfig = {
+				id: appId,
+				timeout: 1000,
+			};
+			var app1 = new Realm.App(appConfig);
+			var credentials = Realm.Credentials.anonymous(); // create an anonymous credential
+			sap.ui.core.BusyIndicator.show();
+			var user = this.fetchUser(app1, credentials).then(function () {
+				var x = app1.functions.postInquiry(oData).then(function () {
+					MessageToast.show("created");
+					this.onCloseAskQuesDialog();
+					var user = this.fetchUser(app1, credentials).then(function () {
+						var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse) {
+							this.getView().getModel("materials").setData(oResponse);
+							this.getView().getModel("materials").updateBindings();
+							this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
+							sap.ui.core.BusyIndicator.hide();
+						}.bind(this));
+					}.bind(this));
+				}.bind(this));
+			}.bind(this));
+		
+		},
+		
+		fetchUser: function (app, credentials) {
+			return new Promise(function (fnResolve, fnReject) {
+				var user = app.logIn(credentials).then(function () {
+					fnResolve(user);
+				});
+			}.bind(this));
+		},
+
+		onCloseAskQuesDialog: function () {
+			this._oAskQuestionDialog.close();
+			this._oAskQuestionDialog.destroy();
+			this.getView().getModel("askQues").setData({});
 		},
 
 		/**
