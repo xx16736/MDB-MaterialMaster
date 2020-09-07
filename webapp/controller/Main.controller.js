@@ -17,7 +17,8 @@ sap.ui.define([
 			var oModelconfig = new JSONModel();
 			this.getOwnerComponent().setModel(oModelconfig, "config");
 			var oConfigData = {
-				"materialcount": 0
+				"materialcount": 0,
+				"selectedMatPath": ""
 			};
 			this.getOwnerComponent().getModel("config").setData(oConfigData);
 			//------
@@ -190,6 +191,8 @@ sap.ui.define([
 			var oSelectedItem = oEvent.getSource();
 			var oContext = oSelectedItem.getBindingContext("materials");
 			var sPath = oContext.getPath();
+
+			this.getOwnerComponent().getModel("config").setProperty("/selectedMatPath", sPath);
 			this.getOwnerComponent().getRouter().navTo("RouteMatDetails");
 
 			/*var oView = this.getView();

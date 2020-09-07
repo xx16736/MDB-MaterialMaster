@@ -2,7 +2,7 @@
 	xmlns:f="sap.f" xmlns:cards="sap.f.cards" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m">
 	<Page title="details">
 		<content>
-			<Carousel height="auto" pages="{ path: 'materials>/' }">
+			<Carousel id="idCarousel" height="auto" pages="{ path: 'materials>/' }">
 				<customLayout>
 					<CarouselLayout visiblePagesCount="1"/>
 				</customLayout>

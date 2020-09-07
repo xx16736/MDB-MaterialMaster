@@ -11,7 +11,14 @@ sap.ui.define([
 		 * @memberOf com.newell.fiori.HelloWorld.view.MaterialDetails
 		 */
 		onInit: function () {
+			this.getOwnerComponent().getRouter().getRoute("RouteMatDetails").attachPatternMatched(this.onRouteMatched, this);
+		},
 
+		onRouteMatched: function (oEvent) {
+			var sPath = this.getOwnerComponent().getModel("config").getProperty("/selectedMatPath");
+			var index = sPath.split("/")[sPath.split("/").length -1];
+			// this.byId("setActivePage").setActivePage();
+			this.byId("idCarousel").setActivePage(this.byId("idCarousel").getPages()[index]);
 		},
 
 		/**
