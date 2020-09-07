@@ -1,0 +1,6 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.newell.fiori.HelloWorld.controller.MaterialDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="details">
+		<content></content>
+	</Page>
+</mvc:View>

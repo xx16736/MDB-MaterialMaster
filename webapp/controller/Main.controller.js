@@ -190,8 +190,9 @@ sap.ui.define([
 			var oSelectedItem = oEvent.getSource();
 			var oContext = oSelectedItem.getBindingContext("materials");
 			var sPath = oContext.getPath();
+			this.getOwnerComponent().getRouter().navTo("RouteMatDetails");
 
-			var oView = this.getView();
+			/*var oView = this.getView();
 			Fragment.load({
 				id: oView.getId(),
 				name: "com.newell.fiori.HelloWorld.view.fragments.MaterialDetails",
@@ -206,17 +207,10 @@ sap.ui.define([
 					path: sPath,
 					model: "materials"
 				});
-				
-				/*var oTable = this.getView().byId("idMaterialDetailsTable");
-				var oSelectedItem = oTable.getSelectedItem();
-				var oData = oSelectedItem.getBindingContext("materials").getObject();
-				this.getView().getModel("add").setData(oData);
-				this.getView().getModel("add").updateBindings();*/
-
-			}.bind(this));
+			}.bind(this));*/
 
 		},
-		
+
 		onCloseMaterialDetailsDialog: function () {
 			this._oMaterialDetailsDialog.close();
 			this._oMaterialDetailsDialog.destroy();
