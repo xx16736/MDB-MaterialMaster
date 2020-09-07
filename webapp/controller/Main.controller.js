@@ -9,17 +9,17 @@ sap.ui.define([
 	return Controller.extend("com.newell.fiori.HelloWorld.controller.Main", {
 		onInit: function () {
 			var oModel = new JSONModel();
-			this.getView().setModel(oModel, "materials");
+			this.getOwnerComponent().setModel(oModel, "materials");
 
 			var oModelAddMaterial = new JSONModel();
-			this.getView().setModel(oModelAddMaterial, "add");
+			this.getOwnerComponent().setModel(oModelAddMaterial, "add");
 
 			var oModelconfig = new JSONModel();
-			this.getView().setModel(oModelconfig, "config");
+			this.getOwnerComponent().setModel(oModelconfig, "config");
 			var oConfigData = {
 				"materialcount": 0
 			};
-			this.getView().getModel("config").setData(oConfigData);
+			this.getOwnerComponent().getModel("config").setData(oConfigData);
 			//------
 			var appId = "app-001-nntbv"; // Set Realm app ID here.
 			var appConfig = {

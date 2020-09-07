@@ -1,6 +1,71 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	controllerName="com.newell.fiori.HelloWorld.controller.MaterialDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+<mvc:View xmlns:core="sap.ui.core" controllerName="com.newell.fiori.HelloWorld.controller.MaterialDetails" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f" xmlns:cards="sap.f.cards" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m">
 	<Page title="details">
-		<content></content>
+		<content>
+			<Carousel height="auto" pages="{ path: 'materials>/' }">
+				<customLayout>
+					<CarouselLayout visiblePagesCount="1"/>
+				</customLayout>
+				<f:Card>
+					<f:header>
+						<cards:Header title="{materials>MatId}" subtitle="{materials>MatDesc}" iconSrc="{products>ProductPicUrl}" iconDisplayShape="Square"/>
+					</f:header>
+					<f:content>
+						<l:VerticalLayout class="sapUiContentPadding" width="100%">
+							<l:BlockLayout>
+								<l:BlockLayoutRow>
+									<l:BlockLayoutCell title="Main Information" width="1">
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Mat Type"/>
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{materials>MatType}"/>
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Available"/>
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{materials>Available}"/>
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Date Available"/>
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="{materials>DateAvailable}:"/>
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Back Order Date"/>
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{materials>BackOrderdate}"/>
+										</HBox>
+									</l:BlockLayoutCell>
+									<l:BlockLayoutCell title="Inquiries" width="1">
+										<Table inset="false" items="{path: 'materials>inquiries'}">
+											<columns>
+												<Column width="5em">
+													<Text text="Sr No"/>
+												</Column>
+												<Column minScreenWidth="Tablet" demandPopin="true">
+													<Text text="Inquiry"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem >
+													<cells>
+														<Text text="{materials>QuesId}"/>
+														<Text text="{materials>QuesText}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+					</f:content>
+				</f:Card>
+			</Carousel>
+		</content>
 	</Page>
 </mvc:View>
