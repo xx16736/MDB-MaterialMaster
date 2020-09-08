@@ -21,6 +21,21 @@ sap.ui.define([
 			var index = sPath.split("/")[sPath.split("/").length - 1];
 			// this.byId("setActivePage").setActivePage();
 			this.byId("idCarousel").setActivePage(this.byId("idCarousel").getPages()[index]);
+			//this.fetchMaterialImage();
+			this.pageChanged();
+		},
+
+		fetchMaterialImage: function (sMatId) {
+			//sMatId = "01";
+			var oModel = this.getOwnerComponent().getModel("config");
+			var sURL = oModel.getProperty("/PortalURL") + sMatId + oModel.getProperty("/ImgExtension");
+			oModel.setProperty("/ImageURL", sURL);
+		},
+
+		pageChanged: function (oEvent) {
+			var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+			var sMatId = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject().MatId;
+			this.fetchMaterialImage(sMatId);
 		},
 
 		onAskQues: function () {

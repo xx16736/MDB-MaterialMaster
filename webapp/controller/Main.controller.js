@@ -10,7 +10,7 @@ sap.ui.define([
 		onInit: function () {
 			var oModel = new JSONModel();
 			this.getOwnerComponent().setModel(oModel, "materials");
-			
+
 			var oModel = new JSONModel();
 			var oConfigAskQuesData = {
 				"MatId": "",
@@ -26,7 +26,10 @@ sap.ui.define([
 			this.getOwnerComponent().setModel(oModelconfig, "config");
 			var oConfigData = {
 				"materialcount": 0,
-				"selectedMatPath": ""
+				"selectedMatPath": "",
+				"PortalURL": "https://ecc.newellrubbermaid.com/irj/go/km/docs/nr_content/Corp/CustomerPortal/images/_",
+				"ImgExtension": ".jpg",
+				"ImageURL": ""
 			};
 			this.getOwnerComponent().getModel("config").setData(oConfigData);
 			//------

@@ -8,13 +8,13 @@
 			</OverflowToolbar>
 		</customHeader>
 		<content>
-			<Carousel id="idCarousel" height="auto" pages="{ path: 'materials>/' }">
+			<Carousel id="idCarousel" height="auto" pages="{ path: 'materials>/' }" pageChanged="pageChanged">
 				<customLayout>
 					<CarouselLayout visiblePagesCount="1"/>
 				</customLayout>
 				<f:Card>
 					<f:header>
-						<cards:Header title="{materials>MatId}" subtitle="{materials>MatDesc}" iconSrc="{products>ProductPicUrl}" iconDisplayShape="Square"/>
+						<cards:Header title="{materials>MatId}" subtitle="{materials>MatDesc}" iconSrc="{config>/ImageURL}" iconDisplayShape="Square"/>
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding" width="100%">
