@@ -37,7 +37,10 @@
 										<cells>
 											<Text text="{materials>MatId} - {materials>MatDesc}"/>
 											<Text text="{materials>MatType}"/>
-											<Text text="{materials>Available}"/>
+											<ObjectStatus text="{= ${materials>Available} === true ? ${i18n>Available} : ${i18n>NotAvailable} }"
+												icon="{= ${materials>Available} === true ? 'sap-icon://status-positive' : 'sap-icon://status-negative' }" 
+												state="{= ${materials>Available} === true ? 'Success' : 'Error' }"/>
+											<!--<Text text="{materials>Available}"/>-->
 											<Text text="{materials>DateAvailable}"/>
 											<Text text="{materials>BackOrderdate}"/>
 										</cells>
