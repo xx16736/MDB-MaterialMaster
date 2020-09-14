@@ -110,6 +110,37 @@ sap.ui.define([
 
 		},
 
+		onDeleteMat: function () {
+			var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+			var sNewIndex = parseInt(sIndex, 10) + 1;
+			//this.byId("idCarousel").setActivePage(this.byId("idCarousel").getPages()[index]);
+			var oData = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject();
+
+			var appId = "app-001-nntbv"; // Set Realm app ID here.
+			var appConfig = {
+				id: appId,
+				timeout: 1000,
+			};
+			var app1 = new Realm.App(appConfig);
+			var credentials = Realm.Credentials.anonymous(); // create an anonymous credential
+			sap.ui.core.BusyIndicator.show();
+			var user = this.fetchUser(app1, credentials).then(function () {
+				var x = app1.functions.deleteMaterial(oData).then(function () {
+					MessageToast.show("deleted");
+					this.byId("idCarousel").setActivePage(this.byId("idCarousel").getPages()[sNewIndex]);
+					sap.ui.core.BusyIndicator.hide();
+					/*var user = this.fetchUser(app1, credentials).then(function () {
+						var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse) {
+							this.getView().getModel("materials").setData(oResponse);
+							this.getView().getModel("materials").updateBindings();
+							this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
+							sap.ui.core.BusyIndicator.hide();
+						}.bind(this));
+					}.bind(this));*/
+				}.bind(this));
+			}.bind(this));
+		},
+
 		fetchUser: function (app, credentials) {
 			return new Promise(function (fnResolve, fnReject) {
 				var user = app.logIn(credentials).then(function () {
