@@ -1,1 +1,16 @@
 /* Enter your custom styles here */
+
+.sapMIBar.sapMHeader-CTX {
+    color: #32363a;
+    background-color: #34aeeb !important;
+    filter: none;
+    background-image: none;
+}
+
+.sfBackground{
+	background-color: aliceblue !important;
+}
+
+.carouselBG{
+	background-color: cornsilk !important;
+}

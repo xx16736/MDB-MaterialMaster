@@ -18,9 +18,9 @@
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding" width="100%">
-							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
 								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
-								singleContainerFullSize="false">
+								singleContainerFullSize="false" class="sfBackground">
 								<form:content>
 									<Label text="Mat Type"/>
 									<Input value="{materials>MatType}"/>
@@ -33,7 +33,7 @@
 									<Input value="{materials>BackOrderdate}"/>
 								</form:content>
 							</form:SimpleForm>
-							<l:BlockLayout>
+							<l:BlockLayout class="carouselBG">
 								<l:BlockLayoutRow>
 									<!--<l:BlockLayoutCell width="1">
 										<HBox class="sapUiTinyMarginBottom">
@@ -54,20 +54,23 @@
 										</HBox>
 									</l:BlockLayoutCell>-->
 									<l:BlockLayoutCell title="Inquiries" width="1">
-										<Table inset="false" items="{path: 'materials>inquiries'}">
-											<columns>
-												<Column>
-													<Text text="Text"/>
-												</Column>
-											</columns>
-											<items>
-												<ColumnListItem >
-													<cells>
-														<Text text="{materials>QuesText}"/>
-													</cells>
-												</ColumnListItem>
-											</items>
-										</Table>
+										<!--<Table inset="false" items="{path: 'materials>inquiries'}">-->
+										<!--	<columns>-->
+										<!--		<Column>-->
+										<!--			<Text text="Text"/>-->
+										<!--		</Column>-->
+										<!--	</columns>-->
+										<!--	<items>-->
+										<!--		<ColumnListItem >-->
+										<!--			<cells>-->
+										<!--				<Text text="{materials>QuesText}"/>-->
+										<!--			</cells>-->
+										<!--		</ColumnListItem>-->
+										<!--	</items>-->
+										<!--</Table>-->
+										<List inset="false" items="{path: 'materials>inquiries'}" id="sth">
+											<StandardListItem title="{materials>QuesText}"/>
+										</List>
 									</l:BlockLayoutCell>
 								</l:BlockLayoutRow>
 							</l:BlockLayout>
