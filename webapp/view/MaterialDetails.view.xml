@@ -1,5 +1,5 @@
 <mvc:View xmlns:core="sap.ui.core" controllerName="com.newell.fiori.HelloWorld.controller.MaterialDetails" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:f="sap.f" xmlns:cards="sap.f.cards" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m">
+	xmlns:f="sap.f" xmlns:cards="sap.f.cards" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form">
 	<Page title="details">
 		<customHeader>
 			<OverflowToolbar >
@@ -18,9 +18,24 @@
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding" width="100%">
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false">
+								<form:content>
+									<Label text="Mat Type"/>
+									<Input value="{materials>MatType}"/>
+									<Label text="Available"/>
+									<Switch state="{materials>Available}" customTextOn="Yes" customTextOff="No"></Switch>
+									<!--<Input value="{add>/Available}"/>-->
+									<Label text="Date Available"/>
+									<Input value="{materials>DateAvailable}"/>
+									<Label text="Back Order Date"/>
+									<Input value="{materials>BackOrderdate}"/>
+								</form:content>
+							</form:SimpleForm>
 							<l:BlockLayout>
 								<l:BlockLayoutRow>
-									<l:BlockLayoutCell  width="1">
+									<!--<l:BlockLayoutCell width="1">
 										<HBox class="sapUiTinyMarginBottom">
 											<Label text="Mat Type"/>
 											<Input value="{materials>MatType}" class="sapUiTinyMarginBegin"/>
@@ -37,7 +52,7 @@
 											<Label text="Back Order Date"/>
 											<Input value="{materials>BackOrderdate}" class="sapUiTinyMarginBegin"/>
 										</HBox>
-									</l:BlockLayoutCell>
+									</l:BlockLayoutCell>-->
 									<l:BlockLayoutCell title="Inquiries" width="1">
 										<Table inset="false" items="{path: 'materials>inquiries'}">
 											<columns>
