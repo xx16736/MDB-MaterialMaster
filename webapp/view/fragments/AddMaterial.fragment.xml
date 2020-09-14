@@ -18,7 +18,8 @@
 					<Label text="Type"/>
 					<Input value="{add>/MatType}"/>
 					<Label text="Available"/>
-					<Input value="{add>/Available}"/>
+					<Switch state="{add>/Available}" customTextOn="Yes" customTextOff="No"></Switch>
+					<!--<Input value="{add>/Available}"/>-->
 					<Label text="Date Available"/>
 					<Input value="{add>/DateAvailable}"/>
 					<Label text="Back Order Date"/>
