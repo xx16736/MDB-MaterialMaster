@@ -8,6 +8,10 @@ sap.ui.define([
 
 	return Controller.extend("com.newell.fiori.HelloWorld.controller.Main", {
 		onInit: function () {
+			// set background image
+			var oApp = this.byId("app");
+			oApp.setBackgroundImage("img/NW_WHITE_BG.png");
+			
 			var oModel = new JSONModel();
 			this.getOwnerComponent().setModel(oModel, "materials");
 
