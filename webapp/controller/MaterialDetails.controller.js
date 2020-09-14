@@ -82,6 +82,34 @@ sap.ui.define([
 
 		},
 
+		onUpdateMatInfo: function () {
+			var appId = "app-001-nntbv"; // Set Realm app ID here.
+			var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+			var oData = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject();
+			var appConfig = {
+				id: appId,
+				timeout: 1000,
+			};
+			var app1 = new Realm.App(appConfig);
+			var credentials = Realm.Credentials.anonymous(); // create an anonymous credential
+			sap.ui.core.BusyIndicator.show();
+			var user = this.fetchUser(app1, credentials).then(function () {
+				var x = app1.functions.updateMaterial(oData).then(function () {
+					MessageToast.show("updated");
+					sap.ui.core.BusyIndicator.hide();
+					/*var user = this.fetchUser(app1, credentials).then(function () {
+						var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse) {
+							this.getView().getModel("materials").setData(oResponse);
+							this.getView().getModel("materials").updateBindings();
+							this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
+							sap.ui.core.BusyIndicator.hide();
+						}.bind(this));
+					}.bind(this));*/
+				}.bind(this));
+			}.bind(this));
+
+		},
+
 		fetchUser: function (app, credentials) {
 			return new Promise(function (fnResolve, fnReject) {
 				var user = app.logIn(credentials).then(function () {
