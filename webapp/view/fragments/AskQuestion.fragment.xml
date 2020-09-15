@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog id="idAddMaterialDialog" title="Ask Question">
+	<Dialog title="Ask Question">
 		<beginButton>
 			<Button text="Submit" type="Accept" press="onSubmitAskQues"/>
 		</beginButton>

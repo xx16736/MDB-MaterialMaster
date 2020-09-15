@@ -82,6 +82,32 @@ sap.ui.define([
 
 		},
 
+		showInquiries: function () {
+			var oView = this.getView();
+			Fragment.load({
+				id: oView.getId(),
+				name: "com.newell.fiori.HelloWorld.view.fragments.Inquiries",
+				controller: this
+			}).then(function (dialog) {
+				this._oInquiriesDialog = dialog;
+				oView.addDependent(this._oInquiriesDialog);
+				this._oInquiriesDialog.open();
+				var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+				var oContext = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials");
+				var sPath = oContext.getPath();
+				this.byId("inquiryList").bindElement({ path: sPath, model: "materials" });
+
+				// var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
+				// var sMatId = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject().MatId;
+				// this.getOwnerComponent().getModel("askQues").setProperty("/MatId", sMatId);
+			}.bind(this));
+		},
+		
+		onCloseInquiryDialog: function () {
+			this._oInquiriesDialog.close();
+			this._oInquiriesDialog.destroy();
+		},
+
 		onUpdateMatInfo: function () {
 			var appId = "app-001-nntbv"; // Set Realm app ID here.
 			var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
@@ -154,7 +180,7 @@ sap.ui.define([
 			this._oAskQuestionDialog.destroy();
 			this.getView().getModel("askQues").setData({});
 		},
-
+		
 		goBack: function () {
 			this.getOwnerComponent().getRouter().navTo("RouteMain");
 		}

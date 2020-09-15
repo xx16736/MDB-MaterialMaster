@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Manage Inquiries">
+		<!--<beginButton>-->
+		<!--	<Button text="Ask" type="Accept" press="onAddMaterialDialog"/>-->
+		<!--</beginButton>-->
+		<endButton>
+			<Button text="Close" type="Reject" press="onCloseInquiryDialog"/>
+		</endButton>
+		<content>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button tooltip="Ask" icon="sap-icon://add" press="onAskQues"/>
+					<Button tooltip="Delete" icon="sap-icon://delete" press="handleDeleteInquiry"/>
+				</content>
+			</OverflowToolbar>
+			<List inset="false" items="{path: 'materials>inquiries'}" id="inquiryList">
+				<StandardListItem title="{materials>QuesText}"/>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
