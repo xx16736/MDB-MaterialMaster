@@ -3,7 +3,7 @@
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page id="page" title="{i18n>title}">
+				<Page id="page" title="">
 					<content>
 						<VBox>
 							<Table id="idMaterialTable" mode="MultiSelect" inset="false" items="{path: 'materials>/', sorter : { path : 'Available', group : true }}">
