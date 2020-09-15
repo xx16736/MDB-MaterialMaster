@@ -16,7 +16,10 @@
 					<Label text="Desc"/>
 					<Input value="{add>/MatDesc}"></Input>
 					<Label text="Type"/>
-					<Input value="{add>/MatType}"/>
+					<ComboBox selectedKey="{add>/MatType}" showSecondaryValues="true" items="{ path: 'materialtype>/', sorter: { path: 'description' } }">
+						<core:ListItem key="{materialtype>type}" text="{materialtype>description}" additionalText="{materialtype>type}"/>
+					</ComboBox>
+					<!--<Input value="{add>/MatType}"/>-->
 					<Label text="Available"/>
 					<Switch state="{add>/Available}" customTextOn="Yes" customTextOff="No"></Switch>
 					<!--<Input value="{add>/Available}"/>-->
