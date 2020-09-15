@@ -13,7 +13,7 @@
 					<CarouselLayout visiblePagesCount="1"/>
 				</customLayout>
 				<f:Card>
-				<!--	<f:header>
+					<!--	<f:header>
 						<cards:Header title="{materials>MatId}" subtitle="{materials>MatDesc}" iconSrc="{config>/ImageURL}" iconDisplayShape="Square"/>
 					</f:header>-->
 					<f:content>
@@ -55,24 +55,24 @@
 											<Input value="{materials>BackOrderdate}" class="sapUiTinyMarginBegin"/>
 										</HBox>
 									</l:BlockLayoutCell>-->
-									<l:BlockLayoutCell title="Inquiries" width="1">
-										<!--<Table inset="false" items="{path: 'materials>inquiries'}">-->
-										<!--	<columns>-->
-										<!--		<Column>-->
-										<!--			<Text text="Text"/>-->
-										<!--		</Column>-->
-										<!--	</columns>-->
-										<!--	<items>-->
-										<!--		<ColumnListItem >-->
-										<!--			<cells>-->
-										<!--				<Text text="{materials>QuesText}"/>-->
-										<!--			</cells>-->
-										<!--		</ColumnListItem>-->
-										<!--	</items>-->
-										<!--</Table>-->
-										<List inset="false" items="{path: 'materials>inquiries'}" id="sth">
-											<StandardListItem title="{materials>QuesText}"/>
-										</List>
+									<l:BlockLayoutCell title="Details" width="1">
+										<!--<List inset="false" items="{path: 'materials>inquiries'}" id="sth">-->
+										<!--	<StandardListItem title="{materials>QuesText}"/>-->
+										<!--</List>-->
+										<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+											adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+											singleContainerFullSize="false" class="sfBackground">
+											<form:content>
+												<Label text="Dimesions"/>
+												<Text text="x * y * z cm3"/>
+												<Label text="Label 2"/>
+												<Text text="some description"/>
+												<Label text="Label 3"/>
+												<Text text="some other description"/>
+												<Label text="Label 4"/>
+												<Text text="Loren Ipsum"/>
+											</form:content>
+										</form:SimpleForm>
 									</l:BlockLayoutCell>
 								</l:BlockLayoutRow>
 							</l:BlockLayout>
