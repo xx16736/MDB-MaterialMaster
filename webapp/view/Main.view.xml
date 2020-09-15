@@ -117,7 +117,7 @@
 						<OverflowToolbar >
 							<ToolbarSpacer/>
 							<Button text="Add" press="onAddMaterial"></Button>
-							<Button text="Update" press="onUpdateMaterial"></Button>
+							<!--<Button text="Update" press="onUpdateMaterial"></Button>-->
 							<Button text="Delete" press="onDeleteMaterial"></Button>
 						</OverflowToolbar>
 					</footer>
