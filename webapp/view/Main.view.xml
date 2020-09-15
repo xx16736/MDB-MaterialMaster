@@ -6,7 +6,7 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<VBox>
-							<Table id="idMaterialTable" mode="SingleSelectLeft" inset="false" items="{path: 'materials>/'}">
+							<Table id="idMaterialTable" mode="MultiSelect" inset="false" items="{path: 'materials>/'}">
 								<headerToolbar>
 									<OverflowToolbar>
 										<content>
