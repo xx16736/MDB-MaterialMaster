@@ -12,16 +12,16 @@ sap.ui.define([
 		onInit: function () {
 			// Keeps reference to any of the created sap.m.ViewSettingsDialog-s in this sample
 			this._mViewSettingsDialogs = {};
-			
+
 			this.mGroupFunctions = {
-				Available: function(oContext) {
+				Available: function (oContext) {
 					var name = oContext.getProperty("Available");
 					return {
 						key: name,
 						text: name
 					};
 				},
-				MatType: function(oContext) {
+				MatType: function (oContext) {
 					var name = oContext.getProperty("MatType");
 					return {
 						key: name,
@@ -36,6 +36,9 @@ sap.ui.define([
 
 			var oModel = new JSONModel();
 			this.getOwnerComponent().setModel(oModel, "materials");
+
+			var oModelMatType = new JSONModel();
+			this.getOwnerComponent().setModel(oModelMatType, "materialtype");
 
 			var oModel = new JSONModel();
 			var oConfigAskQuesData = {
@@ -65,17 +68,24 @@ sap.ui.define([
 				timeout: 1000,
 			};
 
-			sap.ui.core.BusyIndicator.show();
+			//sap.ui.core.BusyIndicator.show();
 			var app1 = new Realm.App(appConfig);
 			var credentials = Realm.Credentials.anonymous(); // create an anonymous credential
 			var user = this.fetchUser(app1, credentials).then(function () {
-				var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse, x1, y1) {
-					this.getView().getModel("materials").setData(oResponse);
-					this.getView().getModel("materials").updateBindings();
+				// fetch materials
+				app1.functions.getMaterialTypes().then(function (oResponse) {
+					this.getView().getModel("materialtype").setData(oResponse);
+					window.console.log("materialtype");
+					window.console.log(oResponse);
+					var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse, x1, y1) {
+						this.getView().getModel("materials").setData(oResponse);
+						this.getView().getModel("materials").updateBindings();
 
-					this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
-					sap.ui.core.BusyIndicator.hide();
+						this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
+						sap.ui.core.BusyIndicator.hide();
+					}.bind(this));
 				}.bind(this));
+
 			}.bind(this));
 
 			/*async function run() {
