@@ -18,6 +18,7 @@
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding" width="100%">
+							<Image src="{config>/ImageURL}"></Image>
 							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
 								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
 								singleContainerFullSize="false" class="sfBackground">
