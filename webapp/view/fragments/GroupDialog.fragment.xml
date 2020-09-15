@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleGroupDialogConfirm">
+		<groupItems>
+			<ViewSettingsItem text="Material Type" key="MatType"/>
+			<ViewSettingsItem text="Available" key="Available"/>
+		</groupItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

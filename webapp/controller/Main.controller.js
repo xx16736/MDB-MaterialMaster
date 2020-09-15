@@ -2,16 +2,38 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/Fragment",
-	"sap/m/MessageToast"
-], function (Controller, JSONModel, Fragment, MessageToast) {
+	"sap/m/MessageToast",
+	'sap/ui/Device',
+	'sap/ui/model/Sorter',
+], function (Controller, JSONModel, Fragment, MessageToast, Device, Sorter) {
 	"use strict";
 
 	return Controller.extend("com.newell.fiori.HelloWorld.controller.Main", {
 		onInit: function () {
+			// Keeps reference to any of the created sap.m.ViewSettingsDialog-s in this sample
+			this._mViewSettingsDialogs = {};
+			
+			this.mGroupFunctions = {
+				Available: function(oContext) {
+					var name = oContext.getProperty("Available");
+					return {
+						key: name,
+						text: name
+					};
+				},
+				MatType: function(oContext) {
+					var name = oContext.getProperty("MatType");
+					return {
+						key: name,
+						text: name
+					};
+				}
+			};
+
 			// set background image
 			var oApp = this.byId("app");
 			oApp.setBackgroundImage("img/NW_WHITE_BG.png");
-			
+
 			var oModel = new JSONModel();
 			this.getOwnerComponent().setModel(oModel, "materials");
 
@@ -232,6 +254,43 @@ sap.ui.define([
 		onCloseMaterialDetailsDialog: function () {
 			this._oMaterialDetailsDialog.close();
 			this._oMaterialDetailsDialog.destroy();
+		},
+
+		handleGroupButtonPressed: function () {
+			this.createViewSettingsDialog("com.newell.fiori.HelloWorld.view.fragments.GroupDialog").open();
+		},
+
+		handleGroupDialogConfirm: function (oEvent) {
+			var oTable = this.byId("idMaterialTable"),
+				mParams = oEvent.getParameters(),
+				oBinding = oTable.getBinding("items"),
+				sPath,
+				bDescending,
+				vGroup,
+				aGroups = [];
+
+			if (mParams.groupItem) {
+				sPath = mParams.groupItem.getKey();
+				bDescending = mParams.groupDescending;
+				vGroup = this.mGroupFunctions[sPath];
+				aGroups.push(new Sorter(sPath, bDescending, vGroup));
+				// apply the selected group settings
+				oBinding.sort(aGroups);
+			}
+		},
+
+		createViewSettingsDialog: function (sDialogFragmentName) {
+			var oDialog = this._mViewSettingsDialogs[sDialogFragmentName];
+
+			if (!oDialog) {
+				oDialog = sap.ui.xmlfragment(sDialogFragmentName, this);
+				this._mViewSettingsDialogs[sDialogFragmentName] = oDialog;
+
+				if (Device.system.desktop) {
+					oDialog.addStyleClass("sapUiSizeCompact");
+				}
+			}
+			return oDialog;
 		},
 
 		rawCode: function () {
