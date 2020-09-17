@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
 	<Dialog title="Manage Inquiries">
 		<!--<beginButton>-->
 		<!--	<Button text="Ask" type="Accept" press="onAddMaterialDialog"/>-->
@@ -17,6 +17,11 @@
 			<List inset="false" items="{path: 'materials>inquiries'}" id="inquiryList">
 				<StandardListItem title="{materials>QuesText}"/>
 			</List>
+			<tnt:NavigationList id="inquiryListNL" items="{path: 'materials>questions'}"  >
+				<tnt:NavigationListItem text="{materials>QuesText}" key="rootItem1" items="{path: 'materials>answers'}" icon="sap-icon://employee">
+					<tnt:NavigationListItem text="{materials>QuesText}"/>
+				</tnt:NavigationListItem>
+			</tnt:NavigationList>
 		</content>
 	</Dialog>
 </core:FragmentDefinition>

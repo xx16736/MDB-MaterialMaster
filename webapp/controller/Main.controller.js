@@ -78,10 +78,8 @@ sap.ui.define([
 					window.console.log("materialtype");
 					window.console.log(oResponse);
 					var x = app1.functions.getMaterialsWithInquiries().then(function (oResponse, x1, y1) {
-						this.getView().getModel("materials").setData(oResponse);
-						this.getView().getModel("materials").updateBindings();
+						this.formatMaterialList(oResponse);
 
-						this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
 						sap.ui.core.BusyIndicator.hide();
 					}.bind(this));
 				}.bind(this));
@@ -100,6 +98,33 @@ sap.ui.define([
 			}
 
 			run();*/
+		},
+
+		formatMaterialList: function (oResponse) {
+			this.getView().getModel("materials").setData(oResponse);
+			window.console.log(oResponse);
+
+			$.each(oResponse, function (key, oMaterial) {
+				oMaterial.questions = [];
+				$.each(oMaterial.inquiries, function (key, oInquiry) {
+					if (oInquiry.type === "Q") {
+						oMaterial.questions.push(oInquiry);
+					}
+				}.bind(this));
+				if (oMaterial.questions[0]) {
+					oMaterial.questions[0].answers = [];
+					$.each(oMaterial.inquiries, function (key, oInquiry) {
+						if (oInquiry.type === "A") {
+							oMaterial.questions[0].answers.push(oInquiry);
+						}
+					}.bind(this));
+				}
+
+			}.bind(this));
+			window.console.log(oResponse);
+
+			this.getView().getModel("materials").updateBindings();
+			this.getView().getModel("config").setProperty("/materialcount", oResponse.length);
 		},
 
 		onAddMaterial: function () {

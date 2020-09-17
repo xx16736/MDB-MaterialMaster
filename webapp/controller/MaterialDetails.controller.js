@@ -98,6 +98,8 @@ sap.ui.define([
 				var oContext = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials");
 				var sPath = oContext.getPath();
 				this.byId("inquiryList").bindElement({ path: sPath, model: "materials" });
+				
+				this.byId("inquiryListNL").bindElement({ path: sPath, model: "materials" });
 
 				// var sIndex = this.byId("idCarousel").getActivePage().split("-")[this.byId("idCarousel").getActivePage().split("-").length - 1];
 				// var sMatId = this.byId("idCarousel").getPages()[sIndex].getBindingContext("materials").getObject().MatId;
