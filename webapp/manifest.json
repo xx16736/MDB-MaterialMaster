@@ -12,6 +12,15 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.38.11"
+		},
+		"dataSources": {
+			"ZPRT_OTC_COMMON_SERVICES_SRV": {
+				"uri": "https://nwgw-dev.newellrubbermaid.com/sap/opu/odata/sap/ZPRT_OTC_COMMON_SERVICES_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZPRT_OTC_COMMON_SERVICES_SRV/metadata.xml"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -56,6 +65,16 @@
 				"settings": {
 					"bundleName": "com.newell.fiori.HelloWorld.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Inline"
+				},
+				"dataSource": "ZPRT_OTC_COMMON_SERVICES_SRV",
+				"preload": true
 			}
 		},
 		"resources": {
