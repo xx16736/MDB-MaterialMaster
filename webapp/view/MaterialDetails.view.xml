@@ -76,6 +76,10 @@
 									</l:BlockLayoutCell>
 								</l:BlockLayoutRow>
 							</l:BlockLayout>
+							<VBox>
+								<Button icon="sap-icon://camera" type="Attention" text="Capture Pic" class="sapUiLargeMarginBegin" press="capturePic"/>
+								<VBox id="vBox1"></VBox>
+							</VBox>
 						</l:VerticalLayout>
 					</f:content>
 				</f:Card>
